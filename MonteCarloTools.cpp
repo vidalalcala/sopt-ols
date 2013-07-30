@@ -6,48 +6,13 @@
 //  Copyright (c) 2013 Jose V. Alcala. All rights reserved.
 //
 
-
+//include C++11 random
+#include <random>
 #include <math.h>
-#include "mtrand.h"
 #include "MonteCarloTools.h"
 #include "/usr/include/armadillo"
 
 using namespace arma;
-
-//Standard normal cdf
-double normcdf(double x)
-{
-	double b1 =  0.319381530;
-	double b2 = -0.356563782;
-	double b3 =  1.781477937;
-	double b4 = -1.821255978;
-	double b5 =  1.330274429;
-	double p1  =  0.2316419;
-	double c  =  0.39894228;
-	
-	if(x >= 0.0) {
-		double t = 1.0 / ( 1.0 + p1 * x );
-		return (1.0 - c * exp( -x * x / 2.0 ) * t *
-				( t *( t * ( t * ( t * b5 + b4 ) + b3 ) + b2 ) + b1 ));
-	}
-	else {
-		double t = 1.0 / ( 1.0 - p1 * x );
-		return ( c * exp( -x * x / 2.0 ) * t *
-				( t *( t * ( t * ( t * b5 + b4 ) + b3 ) + b2 ) + b1 ));
-    }
-}
-
-//Standard normal samples generated with BoxMuller
-void normalSample( double *z1, double *z2, MTRand_open *drand )
-{
-	//Box Muller
-	double u1=(*drand)();
-	double u2=(*drand)();
-	double R=sqrt(-2*log(u1));  // the radial component
-	double angle=2*M_PI*u2;		// the angle
-	*z1=R*cos(angle);		// normal with standard deviation dt
-	*z2=R*sin(angle);
-}
 
 /*
 void coefficientsGBM( mat *drift , mat *volatility , mat x , double t)

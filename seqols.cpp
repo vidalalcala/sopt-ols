@@ -12,9 +12,7 @@
 #include <cmath>
 
 //Includes in the directory
-#include "mtrand.h"
 #include "seqols.h"
-#include "MonteCarloTools.h"
 
 #include "/usr/include/armadillo"
 

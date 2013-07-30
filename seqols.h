@@ -10,7 +10,6 @@
 #define ____seqols__
 
 #include <iostream>
-#include <cmath>
 
 #include "/usr/include/armadillo"
 

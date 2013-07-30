@@ -10,12 +10,11 @@
 //System includes
 #include <iostream>
 #include <cmath>
+#include <random>
 
 //Includes in the directory
-#include "mtrand.h"
 #include "seqols.h"
 #include "seqolsTest.h"
-
 #include "MonteCarloTools.h"
 
 #include "/usr/include/armadillo"
@@ -27,9 +26,8 @@ using namespace arma;
 int main (int argc, char * const argv[])
 {
     //Initialize the random number generator
-	unsigned long init[4] = {time(0), 87563214, 875345, 874643}, length = 4;
-	MTRand_int32 irand(init, length);
-	MTRand_open drand;
+	default_random_engine generator;
+    normal_distribution<double> normalSample(0.0,1.0);
     
     // Create synthetic data
     int p = 4 ;                         // # of parameters
@@ -44,11 +42,9 @@ int main (int argc, char * const argv[])
     mat Z(n,p) ;                        // Matrix with standard normal entries
     
     // Create a n x p matrix with standard normal entries
-    double z1,z2 ;
     for (int i = 0 ; i < n ; i++){
             for (int j = 0 ; j < p ; j++){
-                normalSample( &z1 , &z2 , &drand) ;
-                Z(i,j) = z1 ;
+                Z(i,j) = normalSample(generator) ;
             }
     }
     
