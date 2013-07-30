@@ -26,7 +26,7 @@ using namespace arma;
 int main (int argc, char * const argv[])
 {
     //Initialize the random number generator
-	default_random_engine generator;
+	mt19937 generator;
     normal_distribution<double> normalSample(0.0,1.0);
     
     // Create synthetic data
@@ -48,7 +48,7 @@ int main (int argc, char * const argv[])
             }
     }
     
-    //Generate synthetis responses
+    //Generate synthetic responses
     Y = X * H - Z * Sigma * H ;
     for ( int i = 0 ; i < n ; i++){
         Y.row(i) = Y.row(i) + theta * H  ;
