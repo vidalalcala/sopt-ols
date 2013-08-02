@@ -1,3 +1,6 @@
+
 1. Print data to file and write python script to display results.
 
 2. Show results with different values of gamma.
+
+3. Figure out how to write class code in the .cpp file instead of .h file.
