@@ -7,3 +7,8 @@
 //
 
 #include "stochasticTools.h"
+
+#include <iostream>
+#include <random>
+
+#include "/usr/include/armadillo"

@@ -1,1 +1,3 @@
-1. Test with quadratic.
+1. Print data to file and write python script to display results.
+
+2. Show results with different values of gamma.

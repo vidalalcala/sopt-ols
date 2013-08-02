@@ -5,9 +5,9 @@ Stochastic optimization using ordinary least squares to approximate the Hessian.
 
 ========
 
-The code so far only test the sequential ordinary least squares estimator described in http://home.utad.pt/~psal/Mestrado/ficheiros/lsq.pdf.
+The code test the sequential ordinary least squares estimator proposed by Robbins with a noise quadratic loss function described by LeCun, Zhang and Schaul (2013) "No More Pesky Learning Rates."  
 
 Download and type in the terminal:
 
 make
-./seq_olsTest
+./sop_olsTestQuadratic

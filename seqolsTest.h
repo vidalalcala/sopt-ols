@@ -1,5 +1,5 @@
 //
-//  seqols.h
+//  seqolsTest.h
 //  
 //
 //  Created by Jose Alcala Burgos on 7/18/13.

@@ -1,14 +1,14 @@
-defaul: seq_olsTest
+defaul: sopt_olsTestQuadratic
 
-MonteCarloTools.o: MonteCarloTools.cpp MonteCarloTools.h makefile
-	g++ -std=c++11 -c MonteCarloTools.cpp -framework accelerate
+stochasticTools.o: stochasticTools.cpp stochasticTools.h makefile
+	g++ -std=c++11 -c stochasticTools.cpp -framework accelerate
 
-seqols.o: seqols.cpp seqols.h MonteCarloTools.h makefile
+seqols.o: seqols.cpp seqols.h  makefile
 	g++ -std=c++11 -c seqols.cpp -framework accelerate
 
-seqolsTest.o: seqolsTest.cpp seqolsTest.h seqols.h MonteCarloTools.h makefile
-	g++ -std=c++11 -c seqolsTest.cpp -framework accelerate
+soptolsTestQuadratic.o: soptolsTestQuadratic.cpp seqols.h stochasticTools.h soptolsTestQuadratic.h  makefile
+	g++ -std=c++11 -c soptolsTestQuadratic.cpp -framework accelerate
 
-seq_olsTest: seqolsTest.o seqols.o MonteCarloTools.o
-	g++ -std=c++11 -o seq_olsTest seqolsTest.o seqols.o MonteCarloTools.o -framework accelerate
+sopt_olsTestQuadratic: soptolsTestQuadratic.o seqols.o stochasticTools.o
+	g++ -std=c++11 -o sopt_olsTestQuadratic soptolsTestQuadratic.o seqols.o stochasticTools.o -framework accelerate
 

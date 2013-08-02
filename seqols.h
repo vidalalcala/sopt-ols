@@ -25,13 +25,14 @@ public:
     void addObservation (mat , mat);
     void printEstimator();
     void testInverse() ;
+    mat G ; // Inverse of the first p rows of B
     
 private:
     int n ; // The number of observations
     int p ; // The number of paramters
     mat B ; // Estimator of B in y = x B
     mat P ; // Covariance matrix
-    mat G ; // Inverse of the first p rows of B
+    
 };
 
 #endif /* defined(____seqols__) */

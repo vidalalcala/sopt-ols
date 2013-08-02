@@ -11,6 +11,7 @@
 #include <iostream>
 #include <cmath>
 
+
 //Includes in the directory
 #include "seqols.h"
 
@@ -80,6 +81,8 @@ void SeqOls::addObservation( mat x  // A 1 x p matrix with one predictors
 // Prints the Ols estimator
 void SeqOls::printEstimator(){
     B.print(" B_estimator : ") ;
+    G.print("G_estimator (Hessian inverse):") ;
+    
 }
 
 // Tests that the inverse of the first p rows of B is equal to G.
