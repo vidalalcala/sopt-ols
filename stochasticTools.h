@@ -21,15 +21,14 @@ using namespace arma;
  * @brief Gradient sampler for the quadratic loss in LeCun , Schaul, Zhang (2013).
  *
  * Gradient sampler for the loss function
- * @f
- * $$
+ * @f[
  * L = 0.5 x H x^T
- * $$
- * @f
- * where @f $ x = \alpha - (\alpha_{*} + \Sigma Z)$ @f and @f$Z$@f is a standard
- * normal random variable. Vectors like @f $\alpha,Z$ @f are row vectors
- * and the matrices @f $H,\Sigma$ @f are square matrices.The default parameters
- * @f $ H,\Sigma,\alpha_{*} $ @f are two identity matrices and the zero vector.
+ * @f]
+ *
+ * where @f$ x = \alpha - (\alpha_{*} + \Sigma Z) @f$ and @f$ Z @f$ is a standard
+ * normal random variable. Vectors like @f$ \alpha,Z @f$ are row vectors
+ * and the matrices @f$ H,\Sigma @f$ are square matrices.The default parameters
+ * @f$ H,\Sigma,\alpha_{*} @f$ are two identity matrices and the zero vector.
  */
 
 class stochasticGradientQuadratic
@@ -38,7 +37,7 @@ class stochasticGradientQuadratic
 public:
     /**
      * Constructs the gradient sampler with parameters
-     * @f $ H,\Sigma, \alpha_{*} $ @f .
+     * @f$ H,\Sigma, \alpha_{*} @f$ .
      */
     stochasticGradientQuadratic(const mat& __H , const mat& __Sigma , const mat& __alpha_optimal  ): _M_H(__H), _M_Sigma(__Sigma), _M_alpha_optimal(__alpha_optimal)
     {

@@ -43,7 +43,7 @@ int main (int argc, char * const argv[])
     double gamma = 0.60 ;
     
     // # of iterations in the stochastic optimization
-    int n_iter = par_dim + 1000000000 ;
+    int n_iter = par_dim + 100000 ;
     
     //Inititalize the quadratic test parameters randomly.
     // The Hessian matrix for the quadratic loss.

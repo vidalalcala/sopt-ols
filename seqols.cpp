@@ -21,10 +21,7 @@ using namespace std;
 using namespace arma;
 
 
-
-// Perform linear regression with all the observations
-void SeqOls::useObservations( mat X  // A n x p matrix with n predictors,
-                             // one predictor per row
+void SeqOls::useObservations( mat X  
                              
                              , mat Y // A n x p matrix with n responses,
                              // one response per row
@@ -44,9 +41,9 @@ void SeqOls::useObservations( mat X  // A n x p matrix with n predictors,
     
 }
 
-void SeqOls::addObservation( mat x  // A 1 x p matrix with one predictors
+void SeqOls::addObservation( mat x  
                             
-                            , mat y // A 1 x p matrix with one responses,
+                            , mat y 
                             )
 {
     if ( x.size() != y.size() ){

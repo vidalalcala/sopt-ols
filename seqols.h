@@ -16,22 +16,59 @@
 using namespace std;
 using namespace arma;
 
-
-// Sequential Ordinary Least Square class
-
+/**
+ * Sequential Ordinary Least Square class
+ */
 class SeqOls{
 public:
-    void useObservations (mat , mat) ;
-    void addObservation (mat , mat);
-    void printEstimator();
+    /**
+     * Perform linear regression with all the observations
+     */
+    void useObservations ( mat X /**
+                                  * A n x p matrix with n predictors
+                                  */
+                          , mat Y /**
+                                   * A n x p matrix with n responses,
+                                   */
+                          ) ;
+    
+    /**
+     * Add one observation
+     */
+    void addObservation (mat x /**
+                                * A 1 x p matrix with 1 predictors
+                                */
+                         
+                         , mat y /**
+                                  * A 1 x p matrix with 1 response
+                                  */
+                         ) ;
+    
+    
+    void printEstimator() ;
     void testInverse() ;
-    mat G ; // Inverse of the first p rows of B
+    /**
+     *  Inverse of the first p rows of B
+     */
+    mat G ;
     
 private:
-    int n ; // The number of observations
-    int p ; // The number of paramters
-    mat B ; // Estimator of B in y = x B
-    mat P ; // Covariance matrix
+    /**
+     *  The number of observations
+     */
+    int n ; 
+    /**
+     *  The number of paramters
+     */
+    int p ; 
+    /**
+     *  Estimator of B in y = x B
+     */
+    mat B ;
+    /**
+     *  Covariance matrix
+     */
+    mat P ;
     
 };
 
