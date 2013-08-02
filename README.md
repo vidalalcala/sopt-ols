@@ -10,4 +10,5 @@ The code test the sequential ordinary least squares estimator proposed by Robbin
 Download and type in the terminal:
 
 make
+
 ./sop_olsTestQuadratic
