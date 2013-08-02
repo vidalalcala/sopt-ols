@@ -68,10 +68,12 @@ int main (int argc, char * const argv[])
     Sigma.print(" Sigma : ");
     alpha_optimal.print(" alpha_optimal : ");
     
+    //Construct the stochastic gradient sampler
+    stochasticGradientQuadratic stoGrad  ( H , Sigma , alpha_optimal);
     
-    // Create the first n samples randomly
-    // The matrix with n initial predictors
-    mat X = randu<mat>( par_dim + 2 , par_dim ) ;
+    // Create the first n +1  samples randomly
+    // The matrix with n+1 initial predictors
+    mat X = randu<mat>( n + 1 , par_dim ) ;
     // The matrix of responses
     mat Y(n,par_dim) ;
     // The parameter alpha
@@ -79,24 +81,20 @@ int main (int argc, char * const argv[])
     // The gradient with respect to the parameter alpha
     mat grad_alpha(1,par_dim) ;                   
     
-    //Construct the stochastic gradient optimization
-    stochasticGradientQuadratic stoGrad  ( H , Sigma , alpha_optimal);
-    
     //Generate the first n predictors randomly
-    for (int i = 0 ; i < par_dim + 1 ; i++){
+    for (int i = 0 ; i < n ; i++){
         alpha = X.row(i) ;
-        grad_alpha = stoGrad.operator()<mt19937>( generator , alpha ) ;
+        grad_alpha = stoGrad( generator , alpha ) ;
         Y.row(i) = grad_alpha ;
     }
     
-    
-    // Initialize the OLS estimator with p+1 observations.
+    // Initialize the OLS estimator with n observations.
     SeqOls Estimator ;
-    Estimator.useObservations( X.rows(0,par_dim) , Y .rows(0,par_dim) ) ;
+    Estimator.useObservations( X.rows(0, n - 1 ) , Y .rows(0, n - 1 ) ) ;
     
     //Perform RobbinsMonro with Ordinary Least Squares
     mat H_i_estimator(par_dim,par_dim) ;
-    alpha = X.row(par_dim + 1) ;
+    alpha = X.row( n ) ;
     grad_alpha = stoGrad( generator , alpha ) ;
     mat alpha_new(1,par_dim) ;
     mat grad_alpha_new(1,par_dim) ;
@@ -107,7 +105,7 @@ int main (int argc, char * const argv[])
         H_i_estimator = (0.5)*(Estimator.G + Estimator.G.t()) ;
         alpha_new = alpha - (1.0/pow(i_double,gamma))*grad_alpha*(H_i_estimator);
         Estimator.addObservation( alpha , grad_alpha ) ;
-        grad_alpha_new = stoGrad.operator()<mt19937>( generator , alpha_new );
+        grad_alpha_new = stoGrad( generator , alpha_new );
         alpha = alpha_new ;
         grad_alpha = grad_alpha_new ;
     }
