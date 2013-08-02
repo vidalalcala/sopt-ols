@@ -34,7 +34,7 @@ public:
     /**
      * Constructs the stochastic optimization problem.
      */
-    SOptOls(const stochasticGradient& stoGrad , const mat & alphas_initial )
+    SOptOls(const stochasticGradient& stoGrad , const mat& alphas_initial )
     {
         /**
          * Check that dimensions are consistent
@@ -47,9 +47,12 @@ public:
         _par_dim = alphas_initial.n_cols ;
         _n_predict_initial = alphas_initial.n_rows - 1 ;
         _alphas_initial = alphas_initial ;
-        _n_iterations  = 10000 ;
+        _n_iterations  = 1000000 ;
         _detailed_output = 1 ;
         _outputfile = "example1.out" ;
+        _gamma = 0.60 ;
+        
+        _stoGrad = stoGrad ;
     }
     
     /**
@@ -76,7 +79,7 @@ public:
     template<class _UniformRandomNumberGenerator>
     void optimize(_UniformRandomNumberGenerator& __urng)
     {
-        mat X ( _n_predict_initial + 1 , par_dim ) ;
+        mat X ( _n_predict_initial + 1 , _par_dim ) ;
         X.rows( 0 , _n_predict_initial ) = _alphas_initial ;
         // The matrix of responses
         mat Y(_n_predict_initial,_par_dim) ;
@@ -88,7 +91,7 @@ public:
         //Generate the first n_predict_initial stochastic gradients.
         for (int i = 0 ; i < _n_predict_initial ; i++){
             alpha = X.row(i) ;
-            grad_alpha = stoGrad( __urng , alpha ) ;
+            grad_alpha = _stoGrad( __urng , alpha ) ;
             Y.row(i) = grad_alpha ;
         }
         
@@ -99,7 +102,7 @@ public:
         //Perform Robbins-Monro with Ordinary Least Squares
         mat H_i_estimator(_par_dim,_par_dim) ;
         alpha = X.row(_n_predict_initial) ;
-        grad_alpha = stoGrad( __urng , alpha ) ;
+        grad_alpha = _stoGrad( __urng , alpha ) ;
         mat alpha_new(1,_par_dim) ;
         mat grad_alpha_new(1,_par_dim) ;
         
@@ -109,7 +112,7 @@ public:
             H_i_estimator = (0.5)*(Estimator.G + Estimator.G.t()) ;
             alpha_new = alpha - (1.0/pow(i_double,_gamma))*grad_alpha*(H_i_estimator);
             Estimator.addObservation( alpha , grad_alpha ) ;
-            grad_alpha_new = stoGrad( __urng , alpha_new );
+            grad_alpha_new = _stoGrad( __urng , alpha_new );
             alpha = alpha_new ;
             grad_alpha = grad_alpha_new ;
         }
@@ -132,5 +135,6 @@ private:
     double _gamma ; /*!< The Robbins-Monro update has a factor @f$ 1/n^{\gamma} @f$ */
     bool _detailed_output ;
     string _outputfile ;
+    stochasticGradient _stoGrad ;
     
 };

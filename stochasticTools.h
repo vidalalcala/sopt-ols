@@ -35,6 +35,7 @@ class stochasticGradientQuadratic
 {
     
 public:
+    stochasticGradientQuadratic(){}
     /**
      * Constructs the gradient sampler with parameters
      * @f$ H,\Sigma, \alpha_{*} @f$ .
@@ -108,6 +109,7 @@ class stochasticGradient
 {
     
 public:
+    stochasticGradient(){}
     /**
      * Constructs the gradient sampler with parameters
      * @f$ H,\Sigma, \alpha_{*} @f$ .
