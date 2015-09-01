@@ -10,7 +10,7 @@
 #include <random>
 #include <math.h>
 #include "MonteCarloTools.h"
-#include "/usr/include/armadillo"
+#include <armadillo>
 
 using namespace arma;
 

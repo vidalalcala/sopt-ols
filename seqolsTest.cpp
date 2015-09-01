@@ -17,7 +17,7 @@
 #include "seqolsTest.h"
 #include "MonteCarloTools.h"
 
-#include "/usr/include/armadillo"
+#include <armadillo>
 
 using namespace std;
 using namespace arma;
