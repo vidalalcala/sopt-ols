@@ -12,7 +12,7 @@
 #include <iostream>
 #include <random>
 
-#include "/usr/include/armadillo"
+#include <armadillo>
 
 using namespace std;
 using namespace arma;

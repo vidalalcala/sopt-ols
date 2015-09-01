@@ -10,7 +10,7 @@
 #define AmericanGeometric_MonteCarloTools_h
 
 //include types
-#include "/usr/include/armadillo"
+#include <armadillo>
 using namespace arma;
 
 void coefficientsGBM(   // Saves in array the volatility of a geometric brownian

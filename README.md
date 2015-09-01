@@ -22,4 +22,4 @@ Running
 -------
 
     $ make
-	$ ./sop_olsTestQuadratic
+	$ ./sopt_olsTestQuadratic

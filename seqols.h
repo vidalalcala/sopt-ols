@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-#include "/usr/include/armadillo"
+#include <armadillo>
 
 using namespace std;
 using namespace arma;

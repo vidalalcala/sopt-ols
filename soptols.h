@@ -15,7 +15,7 @@
 #include "seqols.h"
 #include "stochasticTools.h"
 
-#include "/usr/include/armadillo"
+#include <armadillo>
 
 using namespace std;
 using namespace arma;

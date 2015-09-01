@@ -15,7 +15,7 @@
 //Includes in the directory
 #include "seqols.h"
 
-#include "/usr/include/armadillo"
+#include <armadillo>
 
 using namespace std;
 using namespace arma;

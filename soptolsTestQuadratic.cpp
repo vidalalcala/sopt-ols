@@ -19,7 +19,7 @@
 #include "stochasticTools.h"
 #include "soptols.h"
 
-#include "/usr/include/armadillo"
+#include <armadillo>
 
 using namespace std;
 using namespace arma;
