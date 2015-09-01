@@ -1,8 +1,8 @@
 sopt-ols
 ========
 
-Stochastic optimization using ordinary least squares to approximate the Hessian. The code 
-tests a variant of the sequential ordinary least squares estimator proposed by 
+Stochastic optimization using ordinary least squares to approximate the inverse Hessian. 
+The code tests a variant of the sequential ordinary least squares estimator proposed by 
 Robbins and modified by Alcala & Goodman with a noise quadratic loss function described
 by LeCun, Zhang and Schaul (2013) "No More Pesky Learning Rates". The interface will is 
 useful for any stochastic optimization problem.
