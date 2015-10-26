@@ -4,6 +4,7 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - ppa:comp-phys/stable
     packages:
       - g++-4.8
       - gcc-4.8
