@@ -10,7 +10,7 @@ addons:
       - liblapack-dev
       - libblas-dev
       - libboost-dev
-      - libarmadillo-dev
+#      - libarmadillo-dev
 
 language: cpp
 
