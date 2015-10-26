@@ -1,3 +1,5 @@
+sudo: false
+
 addons:
     apt:
         sources:
@@ -5,16 +7,16 @@ addons:
         packages:
             - g++-4.8
             - gcc-4.8
+            - liblapack-dev
+            - libblas-dev
+            - libboost-dev
+            - libarmadillo-dev
 
 language: cpp
 
 compiler:
   - gcc
-
-before_install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update && sudo apt-get install liblapack-dev && sudo apt-get install libblas-dev && sudo apt-get install libboost-dev && sudo apt-get install libarmadillo-dev ; fi
-
+  
 install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 
