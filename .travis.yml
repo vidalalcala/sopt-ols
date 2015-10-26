@@ -1,24 +1,22 @@
 sudo: false
 
 addons:
-    apt:
-        sources:
-            - ubuntu-toolchain-r-test
-        packages:
-            - g++-4.8
-            - gcc-4.8
-            - liblapack-dev
-            - libblas-dev
-            - libboost-dev
-            - libarmadillo-dev
+  apt:
+    packages:
+      - g++-4.8
+      - gcc-4.8
+      - liblapack-dev
+      - libblas-dev
+      - libboost-dev
+      - libarmadillo-dev
 
 language: cpp
 
 compiler:
   - gcc
   
-install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+# install:
+#  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 
 script:
   - make
