@@ -1,6 +1,8 @@
 sopt-ols
 ========
 
+[![Build Status](https://travis-ci.org/vidalalcala/sopt-ols.svg?branch=master)](https://travis-ci.org/vidalalcala/sopt-ols)
+
 Stochastic optimization using ordinary least squares to approximate the inverse Hessian. 
 The code tests a variant of the sequential ordinary least squares estimator proposed by 
 Robbins and modified by Alcala & Goodman with a noise quadratic loss function described
