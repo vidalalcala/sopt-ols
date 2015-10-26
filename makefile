@@ -1,17 +1,38 @@
-default: sopt_olsTestQuadratic
+#
+# TODO: 
+#
+ 
+CC := g++ # This is the main compiler
 
-soptols.o: soptols.cpp soptols.h makefile
-	$(CXX) -std=c++11 -c soptols.cpp -larmadillo
+SRCDIR := src
+BUILDDIR := build
+TARGET := bin/runner
+ 
+SRCEXT := cpp
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CFLAGS := -std=c++11 -c
+LIB := -larmadillo
+INC := -I include
 
-stochasticTools.o: stochasticTools.cpp stochasticTools.h makefile
-	$(CXX) -std=c++11 -c stochasticTools.cpp -larmadillo
+$(TARGET): $(OBJECTS)
+	@echo " Linking..."
+	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
 
-seqols.o: seqols.cpp seqols.h  makefile
-	$(CXX) -std=c++11 -c seqols.cpp -larmadillo
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(BUILDDIR)
+	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
-soptolsTestQuadratic.o: soptolsTestQuadratic.cpp seqols.h stochasticTools.h soptolsTestQuadratic.h  soptols.h makefile
-	$(CXX) -std=c++11 -c soptolsTestQuadratic.cpp -larmadillo
+clean:
+	@echo " Cleaning..."; 
+	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
 
-sopt_olsTestQuadratic: soptolsTestQuadratic.o seqols.o stochasticTools.o soptols.o
-	$(CXX) -std=c++11 -o sopt_olsTestQuadratic soptolsTestQuadratic.o seqols.o stochasticTools.o soptols.o -larmadillo
+# Tests
+#tester:
+#  $(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
 
+# Spikes
+#ticket:
+#  $(CC) $(CFLAGS) spikes/ticket.cpp $(INC) $(LIB) -o bin/ticket
+
+.PHONY: clean

@@ -1,4 +1,9 @@
-Documentation
-sopt_olsTestQuadratic
+# Ignore the build and lib dirs
+build
+lib/*
 
-*.o
+# Ignore any executables
+bin/*
+
+# Ignore Mac specific files
+.DS_Store

@@ -40,7 +40,7 @@ int main (int argc, char * const argv[])
     // We use par_dim + 1 samples to ensure full rank in the linear regression.
     int n = par_dim + 1 ;
     
-    //Inititalize the quadratic test parameters randomly.
+    // Inititalize the quadratic test parameters randomly.
     // The Hessian matrix for the quadratic loss.
     mat H = randu<mat>(par_dim,par_dim) ;
     
