@@ -1,0 +1,73 @@
+\hypertarget{classSeqOls}{\section{Seq\-Ols Class Reference}
+\label{classSeqOls}\index{Seq\-Ols@{Seq\-Ols}}
+}
+
+
+{\ttfamily \#include $<$seqols.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSeqOls_a5b9e388947866adbf51efb9324661adb}{use\-Observations} (mat X, mat Y)
+\item 
+void \hyperlink{classSeqOls_a8da1bf645e17edcb3c91344662e906bf}{add\-Observation} (mat x, mat y)
+\item 
+\hypertarget{classSeqOls_aff54aeaa5772c770426d25a534aa3682}{void {\bfseries print\-Estimator} ()}\label{classSeqOls_aff54aeaa5772c770426d25a534aa3682}
+
+\item 
+\hypertarget{classSeqOls_a5a760f52ef21dcfa183688ebe53a4cdb}{void {\bfseries test\-Inverse} ()}\label{classSeqOls_a5a760f52ef21dcfa183688ebe53a4cdb}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+mat \hyperlink{classSeqOls_a0f9a65cd37a9c61b2a1486e5de62dd13}{G}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sequential Ordinary Least Square class 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSeqOls_a8da1bf645e17edcb3c91344662e906bf}{\index{Seq\-Ols@{Seq\-Ols}!add\-Observation@{add\-Observation}}
+\index{add\-Observation@{add\-Observation}!SeqOls@{Seq\-Ols}}
+\subsubsection[{add\-Observation}]{\setlength{\rightskip}{0pt plus 5cm}void Seq\-Ols\-::add\-Observation (
+\begin{DoxyParamCaption}
+\item[{mat}]{x, }
+\item[{mat}]{y}
+\end{DoxyParamCaption}
+)}}\label{classSeqOls_a8da1bf645e17edcb3c91344662e906bf}
+Add one observation 
+\begin{DoxyParams}{Parameters}
+{\em x} & A 1 x p matrix with 1 predictors \\
+\hline
+{\em y} & A 1 x p matrix with 1 response \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSeqOls_a5b9e388947866adbf51efb9324661adb}{\index{Seq\-Ols@{Seq\-Ols}!use\-Observations@{use\-Observations}}
+\index{use\-Observations@{use\-Observations}!SeqOls@{Seq\-Ols}}
+\subsubsection[{use\-Observations}]{\setlength{\rightskip}{0pt plus 5cm}void Seq\-Ols\-::use\-Observations (
+\begin{DoxyParamCaption}
+\item[{mat}]{X, }
+\item[{mat}]{Y}
+\end{DoxyParamCaption}
+)}}\label{classSeqOls_a5b9e388947866adbf51efb9324661adb}
+Perform linear regression with all the observations 
+\begin{DoxyParams}{Parameters}
+{\em X} & A n x p matrix with n predictors \\
+\hline
+{\em Y} & A n x p matrix with n responses, \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classSeqOls_a0f9a65cd37a9c61b2a1486e5de62dd13}{\index{Seq\-Ols@{Seq\-Ols}!G@{G}}
+\index{G@{G}!SeqOls@{Seq\-Ols}}
+\subsubsection[{G}]{\setlength{\rightskip}{0pt plus 5cm}mat Seq\-Ols\-::\-G}}\label{classSeqOls_a0f9a65cd37a9c61b2a1486e5de62dd13}
+Inverse of the first p rows of B 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/seqols.\-h\item 
+src/seqols.\-cpp\end{DoxyCompactItemize}

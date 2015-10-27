@@ -1,0 +1,8 @@
+\form#0:$ 1/n^{\gamma} $
+\form#1:\[ L = 0.5 x H x^T \]
+\form#2:$ x = \alpha - (\alpha_{*} + \Sigma Z) $
+\form#3:$ Z $
+\form#4:$ \alpha,Z $
+\form#5:$ H,\Sigma $
+\form#6:$ H,\Sigma,\alpha_{*} $
+\form#7:$ H,\Sigma, \alpha_{*} $

@@ -1,0 +1,67 @@
+\hypertarget{classstochasticGradient}{\section{stochastic\-Gradient Class Reference}
+\label{classstochasticGradient}\index{stochastic\-Gradient@{stochastic\-Gradient}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classstochasticGradient_ad1946b90063b1f409b262d642bc0ae9c}{stochastic\-Gradient} (const mat \&\-\_\-\-\_\-\-H, const mat \&\-\_\-\-\_\-\-Sigma, const mat \&\-\_\-\-\_\-alpha\-\_\-optimal)
+\item 
+mat \hyperlink{classstochasticGradient_aa356b9fbec43aae939479da92de860b7}{H} () const 
+\item 
+mat \hyperlink{classstochasticGradient_a86b458a09098df76df558e09284505ed}{Sigma} () const 
+\item 
+int \hyperlink{classstochasticGradient_acde562a9a88098494468c2d30b0914e6}{par\-\_\-dim} () const 
+\item 
+mat \hyperlink{classstochasticGradient_a3bc27b596c185241a77bc4a4c36b4fe9}{alpha\-\_\-optimal} () const 
+\item 
+\hypertarget{classstochasticGradient_a523ea3de5a61632dfba24fbc03d35fba}{{\footnotesize template$<$class \-\_\-\-Uniform\-Random\-Number\-Generator $>$ }\\mat {\bfseries operator()} (\-\_\-\-Uniform\-Random\-Number\-Generator \&\-\_\-\-\_\-urng, const mat \&\-\_\-\-\_\-alpha)}\label{classstochasticGradient_a523ea3de5a61632dfba24fbc03d35fba}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classstochasticGradient_ad1946b90063b1f409b262d642bc0ae9c}{\index{stochastic\-Gradient@{stochastic\-Gradient}!stochastic\-Gradient@{stochastic\-Gradient}}
+\index{stochastic\-Gradient@{stochastic\-Gradient}!stochasticGradient@{stochastic\-Gradient}}
+\subsubsection[{stochastic\-Gradient}]{\setlength{\rightskip}{0pt plus 5cm}stochastic\-Gradient\-::stochastic\-Gradient (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{\-\_\-\-\_\-\-H, }
+\item[{const mat \&}]{\-\_\-\-\_\-\-Sigma, }
+\item[{const mat \&}]{\-\_\-\-\_\-alpha\-\_\-optimal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradient_ad1946b90063b1f409b262d642bc0ae9c}
+Constructs the gradient sampler with parameters $ H,\Sigma, \alpha_{*} $ . Check that dimensions are consistent
+
+\subsection{Member Function Documentation}
+\hypertarget{classstochasticGradient_a3bc27b596c185241a77bc4a4c36b4fe9}{\index{stochastic\-Gradient@{stochastic\-Gradient}!alpha\-\_\-optimal@{alpha\-\_\-optimal}}
+\index{alpha\-\_\-optimal@{alpha\-\_\-optimal}!stochasticGradient@{stochastic\-Gradient}}
+\subsubsection[{alpha\-\_\-optimal}]{\setlength{\rightskip}{0pt plus 5cm}mat stochastic\-Gradient\-::alpha\-\_\-optimal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradient_a3bc27b596c185241a77bc4a4c36b4fe9}
+Gets alpha\-\_\-optimal \hypertarget{classstochasticGradient_aa356b9fbec43aae939479da92de860b7}{\index{stochastic\-Gradient@{stochastic\-Gradient}!H@{H}}
+\index{H@{H}!stochasticGradient@{stochastic\-Gradient}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}mat stochastic\-Gradient\-::\-H (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradient_aa356b9fbec43aae939479da92de860b7}
+Gets H \hypertarget{classstochasticGradient_acde562a9a88098494468c2d30b0914e6}{\index{stochastic\-Gradient@{stochastic\-Gradient}!par\-\_\-dim@{par\-\_\-dim}}
+\index{par\-\_\-dim@{par\-\_\-dim}!stochasticGradient@{stochastic\-Gradient}}
+\subsubsection[{par\-\_\-dim}]{\setlength{\rightskip}{0pt plus 5cm}int stochastic\-Gradient\-::par\-\_\-dim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradient_acde562a9a88098494468c2d30b0914e6}
+Gets par\-\_\-dim \hypertarget{classstochasticGradient_a86b458a09098df76df558e09284505ed}{\index{stochastic\-Gradient@{stochastic\-Gradient}!Sigma@{Sigma}}
+\index{Sigma@{Sigma}!stochasticGradient@{stochastic\-Gradient}}
+\subsubsection[{Sigma}]{\setlength{\rightskip}{0pt plus 5cm}mat stochastic\-Gradient\-::\-Sigma (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradient_a86b458a09098df76df558e09284505ed}
+Gets Sigma 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/stochastic\-Tools.\-h\end{DoxyCompactItemize}

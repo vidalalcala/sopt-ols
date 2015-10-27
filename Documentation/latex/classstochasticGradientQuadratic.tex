@@ -1,0 +1,83 @@
+\hypertarget{classstochasticGradientQuadratic}{\section{stochastic\-Gradient\-Quadratic Class Reference}
+\label{classstochasticGradientQuadratic}\index{stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}}
+}
+
+
+Gradient sampler for the quadratic loss in Le\-Cun , Schaul, Zhang (2013).  
+
+
+
+
+{\ttfamily \#include $<$stochastic\-Tools.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classstochasticGradientQuadratic_a50cac3ebdc38174f41dec59f520da292}{stochastic\-Gradient\-Quadratic} (const mat \&\-\_\-\-\_\-\-H, const mat \&\-\_\-\-\_\-\-Sigma, const mat \&\-\_\-\-\_\-alpha\-\_\-optimal)
+\item 
+mat \hyperlink{classstochasticGradientQuadratic_a32248c803d44fef1e4519f9ade6b983b}{H} () const 
+\item 
+mat \hyperlink{classstochasticGradientQuadratic_a55ae02e7935619e67f128fde15c03e62}{Sigma} () const 
+\item 
+int \hyperlink{classstochasticGradientQuadratic_acd98e4c4a4e740827330e329cea2f7b5}{par\-\_\-dim} () const 
+\item 
+mat \hyperlink{classstochasticGradientQuadratic_ab69db686628580d8f3c2246c601ccb50}{alpha\-\_\-optimal} () const 
+\item 
+\hypertarget{classstochasticGradientQuadratic_ad1aadf35bf711ad8b2ed0d76c9b57959}{{\footnotesize template$<$class \-\_\-\-Uniform\-Random\-Number\-Generator $>$ }\\mat {\bfseries operator()} (\-\_\-\-Uniform\-Random\-Number\-Generator \&\-\_\-\-\_\-urng, const mat \&\-\_\-\-\_\-alpha)}\label{classstochasticGradientQuadratic_ad1aadf35bf711ad8b2ed0d76c9b57959}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Gradient sampler for the quadratic loss in Le\-Cun , Schaul, Zhang (2013). 
+
+Gradient sampler for the loss function \[ L = 0.5 x H x^T \]
+
+where $ x = \alpha - (\alpha_{*} + \Sigma Z) $ and $ Z $ is a standard normal random variable. Vectors like $ \alpha,Z $ are row vectors and the matrices $ H,\Sigma $ are square matrices.\-The default parameters $ H,\Sigma,\alpha_{*} $ are two identity matrices and the zero vector. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classstochasticGradientQuadratic_a50cac3ebdc38174f41dec59f520da292}{\index{stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}!stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}}
+\index{stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}!stochasticGradientQuadratic@{stochastic\-Gradient\-Quadratic}}
+\subsubsection[{stochastic\-Gradient\-Quadratic}]{\setlength{\rightskip}{0pt plus 5cm}stochastic\-Gradient\-Quadratic\-::stochastic\-Gradient\-Quadratic (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{\-\_\-\-\_\-\-H, }
+\item[{const mat \&}]{\-\_\-\-\_\-\-Sigma, }
+\item[{const mat \&}]{\-\_\-\-\_\-alpha\-\_\-optimal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradientQuadratic_a50cac3ebdc38174f41dec59f520da292}
+Constructs the gradient sampler with parameters $ H,\Sigma, \alpha_{*} $ . Check that dimensions are consistent
+
+\subsection{Member Function Documentation}
+\hypertarget{classstochasticGradientQuadratic_ab69db686628580d8f3c2246c601ccb50}{\index{stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}!alpha\-\_\-optimal@{alpha\-\_\-optimal}}
+\index{alpha\-\_\-optimal@{alpha\-\_\-optimal}!stochasticGradientQuadratic@{stochastic\-Gradient\-Quadratic}}
+\subsubsection[{alpha\-\_\-optimal}]{\setlength{\rightskip}{0pt plus 5cm}mat stochastic\-Gradient\-Quadratic\-::alpha\-\_\-optimal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradientQuadratic_ab69db686628580d8f3c2246c601ccb50}
+Gets alpha\-\_\-optimal \hypertarget{classstochasticGradientQuadratic_a32248c803d44fef1e4519f9ade6b983b}{\index{stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}!H@{H}}
+\index{H@{H}!stochasticGradientQuadratic@{stochastic\-Gradient\-Quadratic}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}mat stochastic\-Gradient\-Quadratic\-::\-H (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradientQuadratic_a32248c803d44fef1e4519f9ade6b983b}
+Gets H \hypertarget{classstochasticGradientQuadratic_acd98e4c4a4e740827330e329cea2f7b5}{\index{stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}!par\-\_\-dim@{par\-\_\-dim}}
+\index{par\-\_\-dim@{par\-\_\-dim}!stochasticGradientQuadratic@{stochastic\-Gradient\-Quadratic}}
+\subsubsection[{par\-\_\-dim}]{\setlength{\rightskip}{0pt plus 5cm}int stochastic\-Gradient\-Quadratic\-::par\-\_\-dim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradientQuadratic_acd98e4c4a4e740827330e329cea2f7b5}
+Gets par\-\_\-dim \hypertarget{classstochasticGradientQuadratic_a55ae02e7935619e67f128fde15c03e62}{\index{stochastic\-Gradient\-Quadratic@{stochastic\-Gradient\-Quadratic}!Sigma@{Sigma}}
+\index{Sigma@{Sigma}!stochasticGradientQuadratic@{stochastic\-Gradient\-Quadratic}}
+\subsubsection[{Sigma}]{\setlength{\rightskip}{0pt plus 5cm}mat stochastic\-Gradient\-Quadratic\-::\-Sigma (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstochasticGradientQuadratic_a55ae02e7935619e67f128fde15c03e62}
+Gets Sigma 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/stochastic\-Tools.\-h\end{DoxyCompactItemize}
