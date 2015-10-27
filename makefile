@@ -1,27 +1,28 @@
 #
 # TODO: 
 #
- 
-CC := g++ # This is the main compiler
 
 SRCDIR := src
+INCDIR := include
 BUILDDIR := build
-TARGET := bin/runner
+TARGET := bin/sopt_olsTestQuadratic
  
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -std=c++11 -c
+CFLAGS := -std=c++11
 LIB := -larmadillo
 INC := -I include
 
-$(TARGET): $(OBJECTS)
-	@echo " Linking..."
-	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
+default: $(TARGET)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
-	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	@echo " $(CXX) $(CFLAGS) -c $< -o $@ $(INC) $(LIB)"; $(CXX) $(CFLAGS) -c $< -o $@ $(INC) $(LIB)
+
+$(TARGET): $(OBJECTS)
+	@echo " Linking..."
+	@echo " $(CXX) -o $(TARGET) $^ $(LIB)"; $(CXX) -o $(TARGET) $^  $(LIB)
 
 clean:
 	@echo " Cleaning..."; 
