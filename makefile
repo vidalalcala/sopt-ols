@@ -3,7 +3,6 @@
 #
 
 SRCDIR := src
-INCDIR := include
 BUILDDIR := build
 TARGET := bin/sopt_olsTestQuadratic
  
@@ -12,13 +11,12 @@ SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -std=c++11
 LIB := -larmadillo
-INC := -I include
 
 default: $(TARGET)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
-	@echo " $(CXX) $(CFLAGS) -c $< -o $@ $(INC) $(LIB)"; $(CXX) $(CFLAGS) -c $< -o $@ $(INC) $(LIB)
+	@echo " $(CXX) $(CFLAGS) -c $< -o $@ $(LIB)"; $(CXX) $(CFLAGS) -c $< -o $@ $(LIB)
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
@@ -30,10 +28,10 @@ clean:
 
 # Tests
 #tester:
-#  $(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
+#  $(CC) $(CFLAGS) test/tester.cpp $(LIB) -o bin/tester
 
 # Spikes
 #ticket:
-#  $(CC) $(CFLAGS) spikes/ticket.cpp $(INC) $(LIB) -o bin/ticket
+#  $(CC) $(CFLAGS) spikes/ticket.cpp $(LIB) -o bin/ticket
 
 .PHONY: clean

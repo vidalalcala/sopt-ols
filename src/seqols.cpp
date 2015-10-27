@@ -7,15 +7,13 @@
 //
 //
 
-//System includes
+#include "base/seqols.h"
+
+// System
+#include <armadillo>
+
 #include <iostream>
 #include <cmath>
-
-
-//Includes in the directory
-#include "seqols.h"
-
-#include <armadillo>
 
 using namespace std;
 using namespace arma;

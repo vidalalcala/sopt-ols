@@ -6,9 +6,10 @@
 //
 //
 
-#include "stochasticTools.h"
+#include "base/stochasticTools.h"
+
+// System
+#include <armadillo>
 
 #include <iostream>
 #include <random>
-
-#include <armadillo>
