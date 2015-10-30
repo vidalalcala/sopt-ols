@@ -1,18 +1,19 @@
 //
 //  stochasticTools.h
-//  
 //
-//  Created by Jose Alcala Burgos on 7/30/13.
 //
+//  Created by Jose V. Alcala Burgos on 7/30/13.
+//  Copyright [2013] Jose V. Alcala Burgos
 //
 
-#ifndef ____stochasticTools__
-#define ____stochasticTools__
+#ifndef SRC_BASE_STOCHASTICTOOLS_H_
+#define SRC_BASE_STOCHASTICTOOLS_H_
+
+// System
+#include <armadillo>
 
 #include <iostream>
 #include <random>
-
-#include <armadillo>
 
 using namespace std;
 using namespace arma;
@@ -31,80 +32,6 @@ using namespace arma;
  * @f$ H,\Sigma,\alpha_{*} @f$ are two identity matrices and the zero vector.
  */
 
-class stochasticGradientQuadratic
-{
-    
-public:
-    stochasticGradientQuadratic(){}
-    /**
-     * Constructs the gradient sampler with parameters
-     * @f$ H,\Sigma, \alpha_{*} @f$ .
-     */
-    stochasticGradientQuadratic(const mat& __H , const mat& __Sigma , const mat& __alpha_optimal  ): _M_H(__H), _M_Sigma(__Sigma), _M_alpha_optimal(__alpha_optimal)
-    {
-        /**
-         *Check that dimensions are consistent
-         */
-        _M_par_dim = _M_alpha_optimal.n_cols ;
-        _GLIBCXX_DEBUG_ASSERT( 1 == _M_alpha_optimal.n_rows);
-        _GLIBCXX_DEBUG_ASSERT( _M_H.n_cols == _M_alpha_optimal.n_cols );
-        _GLIBCXX_DEBUG_ASSERT( _M_H.n_rows == _M_alpha_optimal.n_cols );
-        _GLIBCXX_DEBUG_ASSERT( _M_Sigma.n_cols == _M_alpha_optimal.n_cols );
-        _GLIBCXX_DEBUG_ASSERT( _M_Sigma.n_rows == _M_alpha_optimal.n_cols );
-    }
-    
-    /**
-     *Gets H
-     */
-    mat H() const
-    { return _M_H ; }
-    
-    /**
-     *Gets Sigma
-     */
-    mat Sigma() const
-    { return _M_Sigma ; }
-    
-    /**
-     * Gets par_dim
-     */
-    
-    int par_dim() const
-    { return _M_par_dim ; }
-    
-    /**
-     *Gets alpha_optimal
-     */
-    mat alpha_optimal() const
-    { return _M_alpha_optimal ; }
-    
-    template<class _UniformRandomNumberGenerator>
-    mat
-    operator()(_UniformRandomNumberGenerator& __urng, const mat& __alpha ){
-        // The standard normal sampler
-        normal_distribution<double> normalSample(0.0,1.0);
-        
-        // Create a 1 x p matrix with standard normal entries
-        mat Z(1, _M_par_dim) ;
-        for (int j = 0 ; j < _M_par_dim ; j++){
-            Z(0,j) = normalSample(__urng) ;
-        }
-        
-        //the gradient sample
-        mat estimator(1,_M_par_dim) ;
-        estimator = __alpha * _M_H - Z * _M_Sigma * _M_H ;
-        estimator = estimator - _M_alpha_optimal * _M_H ;
-        return estimator;
-    }
-    
-private:
-    mat _M_H ;
-    mat _M_Sigma ;
-    mat _M_alpha_optimal ;
-    int _M_par_dim ;
-    
-};
-
 class stochasticGradient
 {
     
@@ -114,69 +41,62 @@ public:
      * Constructs the gradient sampler with parameters
      * @f$ H,\Sigma, \alpha_{*} @f$ .
      */
-    stochasticGradient(const mat& __H , const mat& __Sigma , const mat& __alpha_optimal  ): _M_H(__H), _M_Sigma(__Sigma), _M_alpha_optimal(__alpha_optimal)
-    {
-        /**
-         *Check that dimensions are consistent
-         */
-        _M_par_dim = _M_alpha_optimal.n_cols ;
-        _GLIBCXX_DEBUG_ASSERT( 1 == _M_alpha_optimal.n_rows);
-        _GLIBCXX_DEBUG_ASSERT( _M_H.n_cols == _M_alpha_optimal.n_cols );
-        _GLIBCXX_DEBUG_ASSERT( _M_H.n_rows == _M_alpha_optimal.n_cols );
-        _GLIBCXX_DEBUG_ASSERT( _M_Sigma.n_cols == _M_alpha_optimal.n_cols );
-        _GLIBCXX_DEBUG_ASSERT( _M_Sigma.n_rows == _M_alpha_optimal.n_cols );
-    }
+     
+    stochasticGradient(
+        const mat& __H, 
+        const mat& __Sigma, 
+        const mat& __alpha_optimal);
     
     /**
      *Gets H
      */
     mat H() const
-    { return _M_H ; }
+    {return _M_H;}
     
     /**
      *Gets Sigma
      */
     mat Sigma() const
-    { return _M_Sigma ; }
+    {return _M_Sigma;}
     
     /**
      * Gets par_dim
      */
     
     int par_dim() const
-    { return _M_par_dim ; }
+    {return _M_par_dim;}
     
     /**
      *Gets alpha_optimal
      */
     mat alpha_optimal() const
-    { return _M_alpha_optimal ; }
+    {return _M_alpha_optimal;}
     
     template<class _UniformRandomNumberGenerator>
     mat
-    operator()(_UniformRandomNumberGenerator& __urng, const mat& __alpha ){
+    operator()(_UniformRandomNumberGenerator& __urng, const mat& __alpha){
         // The standard normal sampler
         normal_distribution<double> normalSample(0.0,1.0);
         
         // Create a 1 x p matrix with standard normal entries
         mat Z(1, _M_par_dim) ;
         for (int j = 0 ; j < _M_par_dim ; j++){
-            Z(0,j) = normalSample(__urng) ;
+            Z(0,j) = normalSample(__urng);
         }
         
         //the gradient sample
-        mat estimator(1,_M_par_dim) ;
-        estimator = __alpha * _M_H - Z * _M_Sigma * _M_H ;
-        estimator = estimator - _M_alpha_optimal * _M_H ;
+        mat estimator(1, _M_par_dim);
+        estimator = __alpha * _M_H - Z * _M_Sigma * _M_H;
+        estimator = estimator - _M_alpha_optimal * _M_H;
         return estimator;
     }
     
 private:
-    mat _M_H ;
-    mat _M_Sigma ;
-    mat _M_alpha_optimal ;
-    int _M_par_dim ;
+    mat _M_H;
+    mat _M_Sigma;
+    mat _M_alpha_optimal;
+    int _M_par_dim;
     
 };
 
-#endif /* defined(____stochasticTools__) */
+#endif  // SRC_BASE_STOCHASTICTOOLS_H_
