@@ -36,11 +36,11 @@ int main(int argc, char * const argv[]) {
 
   // The Hessian matrix for the quadratic loss.
   mat H = randu<mat>(num_parameters, num_parameters);
-  H = 0.5 * (H.t() + H);  // Hessian is symmetric
+  H = H * H.t();  // Hessian is symmetric and positive definite
 
   // The covariance matrix for the quadratic loss.
   mat Sigma = randu<mat>(num_parameters, num_parameters);
-  Sigma = 0.5 * (Sigma.t() + Sigma);
+  Sigma = Sigma * Sigma.t();
 
   // The parameter we will try to estimate.
   mat alpha_optimal = randu<mat>(1, num_parameters);
@@ -55,9 +55,15 @@ int main(int argc, char * const argv[]) {
   // Construct the stochastic gradient sampler
   stochasticGradient stoGrad(H, Sigma, alpha_optimal);
 
-  // Create the first num_initial_samples +1  samples randomly
-  // The matrix with num_initial_samples+1 initial predictors
+  // Create the first num_initial_samples + 1  samples randomly
+  // The matrix with num_initial_samples + 1 initial predictors
   mat X = randu<mat>(num_initial_samples + 1, num_parameters);
+
+  // Save parameters to csv files
+  H.save("output/H.mat", csv_ascii);
+  Sigma.save("output/Sigma.mat", csv_ascii);
+  alpha_optimal.save("output/alpha_optimal.mat", csv_ascii);
+  X.save("output/X.mat", csv_ascii);
 
   // Construct the Stochastic Optimization
   SOptOls sopt(stoGrad, X);

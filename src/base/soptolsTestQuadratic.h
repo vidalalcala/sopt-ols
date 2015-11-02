@@ -1,14 +1,12 @@
 //
 //  soptolsTestQuadratic.h
-//  
+//
 //
 //  Created by Jose Alcala Burgos on 7/30/13.
+//  Copyright [2013] Jose V. Alcala Burgos
 //
-//
 
-#ifndef ____soptolsTestQuadratic__
-#define ____soptolsTestQuadratic__
+#ifndef SRC_BASE_SOPTOLSTESTQUADRATIC_H_
+#define SRC_BASE_SOPTOLSTESTQUADRATIC_H_
 
-#include <iostream>
-
-#endif /* defined(____soptolsTestQuadratic__) */
+#endif  // SRC_BASE_SOPTOLSTESTQUADRATIC_H_
